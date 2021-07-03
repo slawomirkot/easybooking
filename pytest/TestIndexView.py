@@ -136,3 +136,12 @@ def test_profil_opinion_delete(client, client_profil):
     response = client.get(f'/profil/opinion/{client_profil.pk}/delete/')
     assert response.status_code == 404   # test url usuwanie opinie uzytkownika gdu zalogowany i brak opinii
 
+@pytest.mark.django_db
+def test_profil_opinion_in_db(opinions1):
+    assert Opinions.objects.get(opinion="super") == opinions1  # sprawdzanie czy opinia uzytkownika istnieje w bazie
+
+@pytest.mark.django_db
+def test_profil_opinion_delete(client, client_profil, opinions2):
+    response = client.get(f'/profil/opinion/{client_profil.pk}/delete/')
+    assert Opinions.objects.count() == 1
+    assert response.status_code == 200   # test url usuwanie opinie uzytkownika gdu zalogowany i brak opinii
