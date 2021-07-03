@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from bookingvisit import views
-
+app_name ='test1_app'
 
 urlpatterns = [
     path("authorisathion/", include('django.contrib.auth.urls')),
@@ -14,7 +14,7 @@ urlpatterns = [
     path('update-name/<int:pk>/', views.UserNameUpdateView.as_view(), name='name_update'),
     path('update/<int:pk>/', views.UserEmailUpdateView.as_view(), name='email_update'),
     path('update/<int:pk>/phone', views.UpdateClientProfilView.as_view(), name='number_update'),
-    path('profil/<int:pk>/reservation-hairdresser/', views.ReservationHairdersesrView.as_view(), name='client_reservation_hairdresser'),
+    path('profil/reservation-hairdresser/<int:pk>/', views.ReservationHairdersesrView.as_view(), name='client_reservation_hairdresser'),
     path('profil/<int:pk>/reservation-beautician/', views.ReservationBeauticianView.as_view(), name='client_reservation_beautician'),
     path('profil/reservation/<int:pk>/', views.ReservationListView.as_view(), name='client_reservation_list'),
     path('opinion/', views.OpinionsListView.as_view(), name='opinions'),
