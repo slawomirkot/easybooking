@@ -1,0 +1,47 @@
+ {% include 'buttons.html' %}
+
+{% if user.is_authenticated %}
+
+<html lang="pl">
+
+    <center><p class="text-muted mb-0" style="font-size: 8px">Ostatnio zalogowany: {{ user.last_login }}</p>
+<button class="button"><a href="{% url 'index' %}">Wstecz</a> </button></center>
+
+
+
+    <center> <br><div class="container mx-auto"></center>
+    <div class="center-block">
+        <div class="col-sm-12 col-md-12 col-lg-3 pb-4">
+            <div class="card p-7">
+                <h4 class="card-title font-weight-bold text-center">Twój profil {{ user.first_name|title }}</h4>
+                <hr>
+                <div class="card-text">
+                    <center><p class="text-muted mb-0" style="font-size: 12px">Username:</p></center>
+                    <center><p>{{ user.username }}</p>
+                    <p class="text-muted mb-0" style="font-size: 12px">Name:</p>
+                    <p>{{ user.first_name }} {{ user.last_name }} <br><button class="button"><a href="{% url 'name_update' pk=user.id %}">Edytuj</a> </button></p>
+                    <p class="text-muted mb-0" style="font-size: 12px">Email:</p>
+                    <p>{{ user.email }}<br><button class="button"><a href="{% url 'email_update' pk=user.id %}">Edytuj</a></button></p>
+                    <p class="text-muted mb-0" style="font-size: 12px">Telefon:</p>
+                    <p>{{ object.phone_number }}<br><button class="button"><a href="{% url 'number_update' pk=object.id %}">Edytuj</a></button></p>
+                    <p class="text-muted mb-0" style="font-size: 12px">Konto utworzone:</p>
+                    <p>{{ user.date_joined }}</p></center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<center>
+<button class="button"><a href="{% url 'password_change' %}">Zmień hasło</a> </button>
+<button class="button"><a href="{% url 'password_reset' %}">Zresetuj hasło</a> </button>
+</center>
+
+<br><br>
+
+{% else %}
+{% endif %}
+
+
+</main>
+</body>
+</html>

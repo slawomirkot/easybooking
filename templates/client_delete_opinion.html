@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Czy jestes pewien, że chcesz usunąć opinie {{ object }}?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="TAK">
+    </form>
+{% endblock  %}

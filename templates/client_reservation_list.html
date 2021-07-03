@@ -1,0 +1,26 @@
+<div class="navigation">
+    {% include 'buttons.html' %}
+</div>
+<h2>Twoje rezerwacje u kosmetyczki</h2>
+
+<ul id="menu">
+  {% for b in rezervation_list %}
+
+    <li><p>Imię kosmetyczki: {{ b.employees }} | Nazwa usługi: {{ b.services }} | Data: {{ b.day }} | Godzina: {{ b.start_time }} |</p></li>
+        <p><b>| Czas usługi: {{ b.services.time_service }} minut | Koszt usługi: {{b.services.price_service}} zł |</b></p><br>
+    {% endfor %}
+
+</ul>
+    <hr>
+<h2>Twoje rezerwacje u fryzjera</h2>
+    <ul id="menu1">
+  {% for h in rezervation_list_2 %}
+
+    <li><p>Imię Fryzjera: {{ h.employees }} | Nazwa usługi: {{ h.services }} | Data: {{ h.day }} | Godzina: {{ h.start_time }}</p></li>
+        <p><b>| Czas usługi: {{ h.services.time_service }} minut | Koszt usługi: {{h.services.price_service}} zł |</b></p><br>
+  {% endfor %}
+    </ul>
+
+<hr>
+  <br>
+    <center><button class="button"><a href="{% url 'index' %}"><b>Wstecz</b></a></button></center>

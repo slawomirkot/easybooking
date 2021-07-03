@@ -1,0 +1,15 @@
+<div class="navigation">
+    {% include 'buttons.html' %}
+</div>
+<hr>
+<center><b><h3>{% block title %}Rejestracja nowego konta{% endblock %}</h3></b></center>
+
+{% block content %}
+    <center><form method="POST" class="form-group">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success"><b>UTWÓRZ KONTO</b></button>
+         <button class="button"><a href="{% url 'index' %}"><b>Wstecz</b></a>
+
+    </form></center>
+{% endblock %}

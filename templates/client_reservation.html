@@ -1,0 +1,21 @@
+<div class="navigation">
+    {% include 'buttons.html' %}</div>
+
+{% if user.is_authenticated %}
+  <hr><br>
+<center><button class="button"><a href="{% url 'index' %}">Wstecz</a> </button></center>
+<br>
+{% block content %}
+
+    <br>
+    <center>
+        <form action="" enctype="multipart/form-data" method="post"  >
+        {% csrf_token %}
+
+        {{ form.as_p }}
+        <input type="submit" value="Umów wizytę">
+    </form></central>
+{% endblock %}
+{#{% else %}#}
+{#    <p><a href="{% url 'login' %}">Zaloguj się</a> </p>#}
+{% endif %}

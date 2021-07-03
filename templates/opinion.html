@@ -1,0 +1,24 @@
+<center><a href="{% url 'index' %}">Home</a> <a href="{% url 'login' %}">Zaloguj się</a></center>
+<br>
+<hr>
+<br>
+<center><button class="button"><a href="{% url 'index' %}">Wstecz</a> </button></center>
+<hr>
+<h2>Wasze opinie</h2>
+  {% if opinions_list %}
+
+    {% for o in opinions_list %}
+    <hr>
+    <ul id="menu">
+      <br><li><b> Ocena: {{ o.rating }}</b></li>
+      <br> {{ o.opinion }}
+      <p class="text-muted mb-0" style="font-size: 8px">Wystawione przez: {{ o.client }} | Data wystawienia: {{ o.data }}</p>
+    </ul>
+    <hr>
+    {% endfor %}
+
+  {% else %}
+
+    <p>BRAK OPINII</p>
+
+  {% endif %}
