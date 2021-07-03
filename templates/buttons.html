@@ -1,0 +1,19 @@
+{% if user.is_authenticated %}
+
+    <center><a href="{% url 'index' %}">Home</a> <a href="{% url 'logout' %}">Wyloguj się</a></center>
+
+{% else %}
+
+
+			<br><br><center><h1>"Easybooking"</h1></center>
+			<center><h2>Twój ulubiony fryzjer!</h2></center><br>
+<center><button><a href="{% url 'login' %}"><h2><b>UMÓW WIZYTĘ</b></h2></a></button></center>
+			<br><center><h3>Umów wizytę w szybki i prosty sposów!</h3></center>
+	<br>
+	<br>
+	<hr>
+        <center><p><a href="{% url 'opinions' %}">Wasze opinie</a> </p></center>
+    <hr>
+{% endif %}
+
+

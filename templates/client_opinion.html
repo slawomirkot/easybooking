@@ -1,0 +1,33 @@
+<div class="navigation">
+  {% include 'buttons.html' %}</div>
+{% if user.is_authenticated %}
+  <h2>Twoja opinie</h2>
+  {% if opinion_list %}
+
+    {% for o in opinion_list %}
+
+    <ul id="menu">
+      <br><li><b> Ocena: {{ o.rating }}</b></li>
+      <br> {{ o.opinion }}
+      <p class="text-muted mb-0" style="font-size: 8px">Wystawione przez: {{ o.client }} | Data wystawienia: {{ o.data }}</p>
+
+    </ul>
+
+    {% endfor %}
+
+    <br><a href="{% url 'client_opinion_update' pk=user.pk %}"><b>Edytuj opinie</b></a>
+    <br><a href="{% url 'client_opinion_delete' pk=user.pk %}"><b>Usuń opinie</b></a>
+
+  {% else %}
+
+    <p>Brak opini.</p>
+    <br><a href="{% url 'create_client_opinion' pk=user.pk %}"><b>Wystaw opinie</b></a>
+
+
+  {% endif %}
+
+
+{%endif %}
+<hr>
+  <br>
+    <center><button class="button"><a href="{% url 'index' %}"><b>Wstecz</b></a></button></center>

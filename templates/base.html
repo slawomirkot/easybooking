@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+<div class="navigation">
+    {% include 'buttons.html' %}
+{% if user.is_authenticated %}
+<br><br>
+    <hr>
+    <br><br><br><center><p><h1>Miło cię widzieć {{ user.first_name }}!</h1></p>
+            <br><br><br>
+    <hr>
+        <p><a href="{% url 'profil' pk=user.id %}">Mój profil</a> </p>
+    <hr>
+        <p><a href="{% url 'client_reservation_hairdresser' pk=user.id %}">Rezerwacja wizyty u fryzjera</a> </p>
+    <hr>
+        <p><a href="{% url 'client_reservation_beautician' pk=user.id %}">Rezerwacja wizyty u kosmetyczki</a> </p>
+    <hr>
+        <p><a href="{% url 'client_reservation_list' pk=user.pk %}">Moje wizyty</a> </p>
+    <hr>
+    <p><a href="{% url 'client_opinion' pk=user.pk %}">Moje opinie</a> </p></center>
+    <hr>
+{% endif %}
+
+</div>
+
+
+</body>
+
+
+</html>

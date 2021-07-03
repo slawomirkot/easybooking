@@ -1,0 +1,30 @@
+<div class="navigation">
+    {% include 'buttons.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+    <hr>
+    <center><p>Miło cię widzieć {{ user.username }}!</p>
+        <hr
+   <p><a href="{% url 'logout' %}">Logout</a> </p>
+        <p><a href="{% url 'index' %}">Strona główna</a> </p></center>
+{% else %}
+    <hr>
+    <center><form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Zaloguj się">
+        <p><button onclick=location.href="{% url 'signup' %}"><b>UTWÓRZ KONTO</b></button> </p>
+        </form></center>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+{% endif %}
+
+{% endblock  %}
